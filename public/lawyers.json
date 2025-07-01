@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "image": "https://randomuser.me/api/portraits/men/90.jpg",
+    "name": "Awlad Hossain",
+    "speciality": "Criminal Expert",
+    "experience": "5+ years",
+    "licenseNumber": "BD 12451254",
+    "availability": ["Sunday", "Monday", "Thursday"],
+    "fee": 500
+  },
+  {
+    "id": 2,
+    "image": "https://randomuser.me/api/portraits/women/21.jpg",
+    "name": "Farzana Akhter",
+    "speciality": "Family Law",
+    "experience": "7+ years",
+    "licenseNumber": "BD 22568941",
+    "availability": ["Monday", "Wednesday", "Friday"],
+    "fee": 600
+  },
+  {
+    "id": 3,
+    "image": "https://randomuser.me/api/portraits/men/31.jpg",
+    "name": "Kamrul Islam",
+    "speciality": "Civil Litigation",
+    "experience": "10+ years",
+    "licenseNumber": "BD 19874523",
+    "availability": ["Tuesday", "Thursday", "Saturday"],
+    "fee": 700
+  },
+  {
+    "id": 4,
+    "image": "https://randomuser.me/api/portraits/women/45.jpg",
+    "name": "Sadia Jahan",
+    "speciality": "Corporate Law",
+    "experience": "8+ years",
+    "licenseNumber": "BD 30221458",
+    "availability": ["Sunday", "Wednesday"],
+    "fee": 750
+  },
+  {
+    "id": 5,
+    "image": "https://randomuser.me/api/portraits/men/51.jpg",
+    "name": "Nazmul Kabir",
+    "speciality": "Property Law",
+    "experience": "6+ years",
+    "licenseNumber": "BD 51234879",
+    "availability": ["Monday", "Thursday", "Saturday"],
+    "fee": 500
+  },
+  {
+    "id": 6,
+    "image": "https://randomuser.me/api/portraits/women/56.jpg",
+    "name": "Maliha Rahman",
+    "speciality": "Criminal Defense",
+    "experience": "4+ years",
+    "licenseNumber": "BD 44561233",
+    "availability": ["Tuesday", "Friday"],
+    "fee": 450
+  },
+  {
+    "id": 7,
+    "image": "https://randomuser.me/api/portraits/men/63.jpg",
+    "name": "Hasan Mahmud",
+    "speciality": "Constitutional Law",
+    "experience": "12+ years",
+    "licenseNumber": "BD 78951234",
+    "availability": ["Sunday", "Wednesday", "Friday"],
+    "fee": 900
+  },
+  {
+    "id": 8,
+    "image": "https://randomuser.me/api/portraits/women/64.jpg",
+    "name": "Tahmina Sultana",
+    "speciality": "Tax Law",
+    "experience": "9+ years",
+    "licenseNumber": "BD 33678945",
+    "availability": ["Monday", "Thursday"],
+    "fee": 850
+  },
+  {
+    "id": 9,
+    "image": "https://randomuser.me/api/portraits/men/70.jpg",
+    "name": "Rakibul Hasan",
+    "speciality": "Labour Law",
+    "experience": "5+ years",
+    "licenseNumber": "BD 44789123",
+    "availability": ["Tuesday", "Friday", "Saturday"],
+    "fee": 500
+  },
+  {
+    "id": 10,
+    "image": "https://randomuser.me/api/portraits/women/75.jpg",
+    "name": "Lubna Chowdhury",
+    "speciality": "Immigration Law",
+    "experience": "11+ years",
+    "licenseNumber": "BD 55623147",
+    "availability": ["Wednesday", "Saturday"],
+    "fee": 950
+  },
+  {
+    "id": 11,
+    "image": "https://randomuser.me/api/portraits/men/80.jpg",
+    "name": "Faisal Huda",
+    "speciality": "Cyber Law",
+    "experience": "3+ years",
+    "licenseNumber": "BD 99876541",
+    "availability": ["Monday", "Thursday"],
+    "fee": 400
+  },
+  {
+    "id": 12,
+    "image": "https://randomuser.me/api/portraits/men/84.jpg",
+    "name": "Shafiq Rahman",
+    "speciality": "Intellectual Property",
+    "experience": "20+ years",
+    "licenseNumber": "BD 11023578",
+    "availability": ["Sunday", "Tuesday", "Friday"],
+    "fee": 1000
+  }
+]
