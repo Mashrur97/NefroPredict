@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import Squares from "../../Reactbits/Squares/Squares";
 
 const blogPosts = [
   {
@@ -24,15 +24,10 @@ const blogPosts = [
   },
   {
     title: "🧭 Kidneys: The Body’s Natural Navigators",
-    fullContent: `We don’t often think of our kidneys as decision-makers, but in many ways, they are. Each day, they choose what stays in your body and what needs to leave—a quiet kind of wisdom built into your biology. They sift through every drop of blood, deciding how much water to keep, which electrolytes to balance, and when to raise a flag to other organs. They even activate hormones that tell your bones to grow and your blood pressure to stabilize. It’s easy to overlook them—until they stop working. But like the best navigators, they’ve been guiding your body in the right direction all along.`,
+    fullContent: `We don’t often think of our kidneys as decision-makers, but in many ways, they are. Each day, they choose what stays in your body and what needs to leave—a quiet kind of wisdom built into your biology. They sift through every drop of blood, deciding how much water to keep, which electrolytes to balance, and when to raise a flag to other organs. They even activate hormones that tell your bones to grow and your blood pressure to stabilize.`,
     date: "29-5-2020",
   },
 ];
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
 
 const Blogs = () => {
   const [expandedIndex, setExpandedIndex] = useState(null);
@@ -42,54 +37,55 @@ const Blogs = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-6">
-      <motion.h1
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-4xl text-center font-semibold mb-8"
-      >
-        Blogs
-      </motion.h1>
+    <div className="relative w-full bg-black text-white min-h-screen overflow-hidden">
+      {/* Background Animation */}
+      <div className="absolute inset-0 z-0">
+        <Squares
+          speed={0.2}
+          squareSize={40}
+          direction="diagonal"
+          borderColor="#1e3a8a"
+          hoverFillColor="#1e1e1e"
+        />
+      </div>
 
-      {blogPosts.map((post, index) => (
-        <motion.div
-          key={index}
-          className="space-y-3 border border-gray-200 p-5 rounded-2xl bg-gray-200 mb-6"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={cardVariants}
-        >
-          <p className="font-semibold text-xl">{post.title}</p>
-          <div className="py-3 border-y border-dashed border-gray-400">
-            <p className="text-gray-800">
-              {expandedIndex === index
-                ? post.fullContent
-                : post.fullContent.slice(0, 150) + "..."}
-            </p>
-            <button
-              onClick={() => toggleReadMore(index)}
-              className="text-green-500 mt-2 font-semibold hover:underline"
-            >
-              {expandedIndex === index ? "Show less ▲" : "Read more ▼"}
-            </button>
-          </div>
-          <p className="text-sm opacity-75">Added at: {post.date}</p>
-        </motion.div>
-      ))}
+      {/* Foreground Content */}
+      <div className="relative z-10 max-w-4xl mx-auto px-4 py-10">
+        <h1 className="text-4xl text-center font-bold mb-8 text-blue-400">
+          Blogs
+        </h1>
 
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.4 }}
-        className="text-center"
-      >
-        <button className="relative rounded-3xl px-5 py-2 overflow-hidden group bg-green-600 relative hover:bg-gradient-to-r hover:from-green-500 hover:to-green-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-green-400 transition-all ease-out duration-300">
-          <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
-          <span className="relative">Post your own blog</span>
-        </button>
-      </motion.div>
+        {blogPosts.map((post, index) => (
+     <div
+  key={index}
+  className="space-y-3 p-5 rounded-2xl bg-white text-black shadow-md shadow-blue-300/20 mb-6"
+>
+  <p className="font-semibold text-xl text-blue-700">{post.title}</p>
+  <div className="py-3 border-y border-dashed border-gray-400">
+    <p className="text-gray-800">
+      {expandedIndex === index
+        ? post.fullContent
+        : post.fullContent.slice(0, 180) + "..."}
+    </p>
+    <button
+      onClick={() => toggleReadMore(index)}
+      className="text-blue-600 mt-2 font-semibold hover:underline"
+    >
+      {expandedIndex === index ? "Show less ▲" : "Read more ▼"}
+    </button>
+  </div>
+  <p className="text-sm text-gray-500">Added at: {post.date}</p>
+</div>
+
+        ))}
+
+        <div className="text-center mt-10">
+          <button className="relative rounded-3xl px-5 py-2 overflow-hidden group bg-blue-600 hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-blue-400 transition-all ease-out duration-300">
+            <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
+            <span className="relative">Post your own blog</span>
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
