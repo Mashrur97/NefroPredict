@@ -7,6 +7,7 @@ import About from "../pages/About";
 import Hows from "../pages/Hows";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import Prediction from "../pages/Prediction";
 
 export const router = createBrowserRouter([
     {
@@ -36,6 +37,10 @@ export const router = createBrowserRouter([
       {
       path: '/signup',
       Component: Register,
+      },
+      {
+      path: '/predict',
+      Component: Prediction,
       }
      ],
     },
