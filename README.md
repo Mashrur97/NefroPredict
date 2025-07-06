@@ -1,12 +1,63 @@
-# React + Vite
+# 🔬 NefroPredict — Early CKD Detection Using AI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**NefroPredict** is a full-stack web application that leverages machine learning to assist in the **early detection of Chronic Kidney Disease (CKD)**. The project combines an interactive frontend, intelligent ML-backed backend, and essential healthcare-focused preprocessing—all in one.
 
-Currently, two official plugins are available:
+Live link: https://sparkly-torrone-44dcdb.netlify.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🌟 Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🧠 **ML-Powered Predictions**  
+  Detects potential CKD using trained machine learning models on clinical data.
+
+- 🩺 **User-Friendly Interface**  
+  Built with React and TailwindCSS for a responsive and clean UI.
+
+- 🔍 **Step-by-Step Flow**  
+  Guided input form, real-time prediction, and risk level output.
+
+- 🔐 **Privacy Focused**  
+  No personal data stored. Just accurate predictions with full transparency.
+
+---
+
+## 🛠 Tech Stack
+
+- **Frontend:** React, TailwindCSS, Framer Motion  
+- **Backend:** Node.js, Express.js  
+- **ML Model:** Scikit-learn (Random Forest) trained on real clinical datasets  
+- **Hosting:** Vercel (Frontend), Render/Heroku (Backend API)
+
+---
+
+## 🚀 How It Works
+
+1. **Input Clinical Data** — Users enter values like glucose, blood pressure, creatinine, etc.
+2. **Prediction Engine** — Backend API processes data and predicts CKD risk using ML.
+3. **Risk Output** — A confidence score and risk category are displayed.
+4. **Guidance** — Recommendations on whether to seek medical consultation.
+
+---
+
+## 👨‍💻 Meet the Team
+
+- **Tanvir Rahman Majumdar** — Data preprocessing & feature engineering  
+- **Mashrur Fardin** — Frontend development & UI design  
+- **Al Af Muktadir** — Backend development & ML integration
+
+
+---
+
+## 📦 Installation
+
+```bash
+# Clone the repo
+git clone https://github.com/yourusername/nefropredict.git
+cd nefropredict
+
+# Install dependencies
+npm install
+
+# Run the app
+npm run dev
