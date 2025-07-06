@@ -5,7 +5,6 @@ const Home = () => {
     return (
         <div>
          <Hero></Hero> 
-         {/* <Hows></Hows> */}
          <DoctorSearch></DoctorSearch>
         </div>
     );
