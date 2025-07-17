@@ -1,14 +1,47 @@
-import { Link } from "react-router";
+import { useContext } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { toast, Toaster } from "sonner";
+import Cookies from "js-cookie";
 import MagnetLines from "../../Reactbits/MagnetLines/MagnetLines";
+import { AuthContext } from "../context/AuthContext";
+import { jwtDecode } from "jwt-decode";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { setUser } = useContext(AuthContext);
+  const from = location.state?.from?.pathname || "/";
+
   const handleSub = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
-    const pass = e.target.pass.value;
-  };
+    const password = e.target.pass.value;
 
-  const handleClick = () => {};
+    fetch("http://localhost:5000/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          Cookies.set("token", data.data, { expires: 7, path: "/" });
+          const decoded = jwtDecode(data.data);
+          setUser(decoded);
+          toast.success("Login successful!");
+          navigate(from, { replace: true });
+          e.target.reset();
+        } else {
+          toast.error("Login failed: " + data.message);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        toast.error("An error occurred during login");
+      });
+  };
 
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black text-white px-4">
@@ -52,7 +85,10 @@ const Login = () => {
               className="w-full px-4 py-2 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
-          <button className="relative w-full rounded-3xl px-5 py-2 overflow-hidden group bg-blue-600 hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-blue-400 transition-all ease-out duration-300">
+          <button
+            type="submit"
+            className="relative w-full rounded-3xl px-5 py-2 overflow-hidden group bg-blue-600 hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-blue-400 transition-all ease-out duration-300"
+          >
             <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
             <span className="relative">Login</span>
           </button>
@@ -67,6 +103,7 @@ const Login = () => {
           </Link>
         </p>
       </div>
+      <Toaster />
     </div>
   );
 };

@@ -37,20 +37,20 @@ const Hero = () => {
               className="text-blue-400 text-5xl font-bold mb-5"
             />
           </div>
-          
+
           <DecryptedText
             text="NefroPredict is an AI-powered early detection tool for Chronic Kidney Disease. Using machine learning models trained on real clinical data, it helps identify CKD risk factors quickly and intuitively before it’s too late."
             animateOn="view"
             revealDirection="center"
           />
           <br />
-          <br />
           <Link to="/predict">
-            <button className="relative rounded-3xl px-5 py-2 overflow-hidden group bg-blue-600 hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-blue-400 transition-all ease-out duration-300">
+            <button className="relative mt-8 rounded-3xl px-5 py-2 overflow-hidden group bg-blue-600 hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-blue-400 transition-all ease-out duration-300">
               <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
               <span className="relative">Try now</span>
             </button>
           </Link>
+          <br />
         </div>
       </div>
     </div>

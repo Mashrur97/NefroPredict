@@ -14,9 +14,9 @@ const Predict = () => {
     e.preventDefault();
     console.log("Submitted values:", inputs);
 
-
     const prediction = "Prediction: CKD Detected";
     setResult(prediction);
+    console.log(prediction);
     toast.success(prediction);
   };
 
@@ -60,19 +60,50 @@ const Predict = () => {
         </div>
 
         <div className="relative z-10 w-full max-w-4xl bg-gray-900 bg-opacity-90 backdrop-blur-md rounded-2xl shadow-2xl p-8">
-          <h2 className="text-3xl font-bold text-center mb-6">CKD Prediction</h2>
-          <form onSubmit={handleSubmit} className="space-y-3 grid grid-cols-1 md:grid-cols-2 gap-4">
-
-            {renderButtonGroup("Age", "age", ["20-29", "30-39", "40-49", "50-59", "60+"])}
-            {renderButtonGroup("Blood Pressure", "bp", ["Low", "Normal", "High"])}
-            {renderButtonGroup("Specific Gravity", "sg", ["1.005", "1.010", "1.015", "1.020", "1.025"])}
+          <h2 className="text-3xl font-bold text-center mb-6">
+            CKD Prediction
+          </h2>
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-3 grid grid-cols-1 md:grid-cols-2 gap-4"
+          >
+            {renderButtonGroup("Age", "age", [
+              "20-29",
+              "30-39",
+              "40-49",
+              "50-59",
+              "60+",
+            ])}
+            {renderButtonGroup("Blood Pressure", "bp", [
+              "Low",
+              "Normal",
+              "High",
+            ])}
+            {renderButtonGroup("Specific Gravity", "sg", [
+              "1.005",
+              "1.010",
+              "1.015",
+              "1.020",
+              "1.025",
+            ])}
             {renderButtonGroup("Albumin", "al", ["0", "1", "2", "3", "4", "5"])}
             {renderButtonGroup("Sugar", "su", ["0", "1", "2", "3", "4", "5"])}
-            {renderButtonGroup("Red Blood Cells", "rbc", ["Normal", "Abnormal"])}
+            {renderButtonGroup("Red Blood Cells", "rbc", [
+              "Normal",
+              "Abnormal",
+            ])}
             {renderButtonGroup("Pus Cell", "pc", ["Normal", "Abnormal"])}
             {renderButtonGroup("Hemoglobin", "hemo", ["Low", "Normal", "High"])}
-            {renderButtonGroup("Packed Cell Volume", "pcv", ["Low", "Normal", "High"])}
-            {renderButtonGroup("Serum Creatinine", "sc", ["Low", "Normal", "High"])}
+            {renderButtonGroup("Packed Cell Volume", "pcv", [
+              "Low",
+              "Normal",
+              "High",
+            ])}
+            {renderButtonGroup("Serum Creatinine", "sc", [
+              "Low",
+              "Normal",
+              "High",
+            ])}
             {renderButtonGroup("Blood Urea", "bu", ["Low", "Normal", "High"])}
             {renderButtonGroup("Sodium", "sod", ["Low", "Normal", "High"])}
             {renderButtonGroup("Potassium", "pot", ["Low", "Normal", "High"])}
