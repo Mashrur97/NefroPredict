@@ -3,6 +3,7 @@
 **NefroPredict** is a full-stack web application that leverages machine learning to assist in the **early detection of Chronic Kidney Disease (CKD)**. The project combines an interactive frontend, intelligent ML-backed backend, and essential healthcare-focused preprocessing—all in one.
 
 Live link: https://sparkly-torrone-44dcdb.netlify.app/
+
 Backend  :   https://github.com/Mashrur97/NefroPredict-Backend
 ---
 
