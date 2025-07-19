@@ -1,14 +1,12 @@
 🔬 NefroPredict — Early CKD Detection Using AI
 NefroPredict is a full-stack web application that leverages machine learning to assist in the early detection of Chronic Kidney Disease (CKD). The project combines an interactive frontend, intelligent ML-backed backend, and essential healthcare-focused preprocessing—all in one.
 
-Live link: https://sparkly-torrone-44dcdb.netlify.app/
-Backend  :   https://github.com/Mashrur97/NefroPredict-Backend
----
+🔗 Live App: https://sparkly-torrone-44dcdb.netlify.app/
+🔧 Backend Repo: https://github.com/Mashrur97/NefroPredict-Backend
 
-## 🌟 Features
-
-- 🧠 **ML-Powered Predictions**  
-  Detects potential CKD using trained machine learning models on clinical data.
+🌟 Features
+🧠 ML-Powered Predictions
+Detect potential CKD cases using trained machine learning models on clinical data.
 
 🩺 User-Friendly Interface
 Built with React and TailwindCSS for a responsive, clean, and modern UI.
