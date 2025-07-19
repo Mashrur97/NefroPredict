@@ -6,22 +6,22 @@ const steps = [
   {
     icon: "🔍",
     title: "Step 1: Enter Prediction Inputs",
-    description: `To begin the process, users are prompted to enter various clinical values such as blood pressure, blood glucose, albumin levels, red blood cell count, serum creatinine, sodium, potassium, hemoglobin, and more. These values are carefully selected based on their medical relevance to Chronic Kidney Disease (CKD). The interface is designed to be clean and user-friendly, guiding even non-technical users through each input with explanations or tooltips. These inputs are not just arbitrary numbers—they represent real physiological markers that the model needs in order to perform a precise prediction. Ensuring accurate and complete data here is critical for generating reliable results later in the pipeline.`,
+    description: `Users input key clinical values like blood pressure, glucose, albumin, creatinine, and more. These features help the model make accurate predictions. The form is simple, with tooltips for guidance.`,
   },
   {
     icon: "🧠",
     title: "Step 2: Machine Learning Prediction",
-    description: `Once the data is submitted, it is immediately passed to a pre-trained machine learning model that has been optimized for CKD risk assessment. This model was trained on a comprehensive dataset of real patient records, learning from patterns between clinical indicators and disease stages. It uses decision-tree-based algorithms that are both interpretable and high-performing. In milliseconds, the model processes your input and generates a risk prediction. It considers not only individual values but also how different features interact—for instance, how serum creatinine correlates with blood urea nitrogen or how hemoglobin levels might indicate anemia commonly seen in CKD patients.`,
+    description: `After submission, your data is analyzed by a trained ML model using decision-tree algorithms. It instantly predicts CKD risk based on patterns from real patient data.`,
   },
   {
     icon: "📊",
     title: "Step 3: Risk Score & Recommendation",
-    description: `Based on the model’s internal decision logic, it outputs a prediction class (e.g., "Low Risk", "Medium Risk", or "High Risk") along with a numerical confidence score ranging from 0 to 100%. This dual-output approach gives users both a categorical and quantitative understanding of their CKD risk. If the result is high risk, users are advised to seek immediate medical consultation. If medium or low, the system still recommends follow-ups and healthy lifestyle tips. This output isn’t just a dry statistic—it’s designed to empower users with actionable insights, helping bridge the gap between clinical data and patient awareness.`,
+    description: `You’ll receive a CKD risk category (Low/Medium/High) with a confidence score. The app also suggests lifestyle tips or next steps based on the result.`,
   },
   {
     icon: "🔐",
     title: "Step 4: Privacy & Medical Ethics",
-    description: `All predictions are computed on-the-fly; no user data is stored in any database unless explicitly consented to. This ensures maximum privacy and aligns with healthcare data handling best practices. We take ethical AI seriously—our system is built to assist, not diagnose. It never replaces professional medical opinion but instead offers early warning and education. The entire tool is compliant with modern data governance standards and includes disclaimers reminding users to always consult licensed physicians for official diagnoses. Transparency, privacy, and ethical responsibility are at the heart of how this system was built.`,
+    description: `Your data is never stored. Predictions happen in real-time, maintaining privacy. We follow ethical AI principles and recommend consulting doctors for any medical action.`,
   },
 ];
 
