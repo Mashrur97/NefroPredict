@@ -1,57 +1,55 @@
-# 🔬 NefroPredict — Early CKD Detection Using AI
+🔬 NefroPredict — Early CKD Detection Using AI
+NefroPredict is a full-stack web application that leverages machine learning to assist in the early detection of Chronic Kidney Disease (CKD). The project combines an interactive frontend, intelligent ML-backed backend, and essential healthcare-focused preprocessing—all in one.
 
-**NefroPredict** is a full-stack web application that leverages machine learning to assist in the **early detection of Chronic Kidney Disease (CKD)**. The project combines an interactive frontend, intelligent ML-backed backend, and essential healthcare-focused preprocessing—all in one.
+🔗 Live App: https://sparkly-torrone-44dcdb.netlify.app/
+🔧 Backend Repo: https://github.com/Mashrur97/NefroPredict-Backend
 
-Live link: https://sparkly-torrone-44dcdb.netlify.app/
-Backend  :   https://github.com/Mashrur97/NefroPredict-Backend
----
+🌟 Features
+🧠 ML-Powered Predictions
+Detect potential CKD cases using trained machine learning models on clinical data.
 
-## 🌟 Features
+🩺 User-Friendly Interface
+Built with React and TailwindCSS for a responsive, clean, and modern UI.
 
-- 🧠 **ML-Powered Predictions**  
-  Detects potential CKD using trained machine learning models on clinical data.
+🔍 Step-by-Step Flow
+Guided input form, real-time predictions, and CKD risk output with explanation.
 
-- 🩺 **User-Friendly Interface**  
-  Built with React and TailwindCSS for a responsive and clean UI.
+🔐 Privacy Focused
+No personal data is stored. All predictions are computed on-the-fly with full transparency.
 
-- 🔍 **Step-by-Step Flow**  
-  Guided input form, real-time prediction, and risk level output.
+🛠 Tech Stack
+Frontend: React, TailwindCSS, Framer Motion
 
-- 🔐 **Privacy Focused**  
-  No personal data stored. Just accurate predictions with full transparency.
+Backend: Node.js, Express.js
 
----
+ML Model: Scikit-learn (Random Forest) trained on real clinical datasets
 
-## 🛠 Tech Stack
+Hosting: Netlify (Frontend), Render/Heroku (Backend)
 
-- **Frontend:** React, TailwindCSS, Framer Motion  
-- **Backend:** Node.js, Express.js  
-- **ML Model:** Scikit-learn (Random Forest) trained on real clinical datasets  
-- **Hosting:** Vercel (Frontend), Render/Heroku (Backend API)
+🚀 How It Works
+Input Clinical Data
+Users provide health metrics such as glucose, blood pressure, albumin, and creatinine.
 
----
+Prediction Engine
+The backend API processes the input and feeds it to a trained Random Forest model.
 
-## 🚀 How It Works
+Risk Output
+The app returns a risk level (Low, Medium, or High) with a confidence percentage.
 
-1. **Input Clinical Data** — Users enter values like glucose, blood pressure, creatinine, etc.
-2. **Prediction Engine** — Backend API processes data and predicts CKD risk using ML.
-3. **Risk Output** — A confidence score and risk category are displayed.
-4. **Guidance** — Recommendations on whether to seek medical consultation.
+Guidance
+Based on risk, users receive recommendations—especially if medical consultation is advised.
 
----
+👨‍💻 Meet the Team
+Tanvir Rahman Majumdar — Data preprocessing & feature engineering
 
-## 👨‍💻 Meet the Team
+Mashrur Fardin — Frontend development & UI/UX design
 
-- **Tanvir Rahman Majumdar** — Data preprocessing & feature engineering  
-- **Mashrur Fardin** — Frontend development & UI design  
-- **Al Af Muktadir** — Backend development & ML integration
+Al Af Muktadir — Backend development & ML model integration
 
-
----
-
-## 📦 Installation
-
-```bash
+📦 Installation
+bash
+Copy
+Edit
 # Clone the repo
 git clone https://github.com/yourusername/nefropredict.git
 cd nefropredict
@@ -59,5 +57,5 @@ cd nefropredict
 # Install dependencies
 npm install
 
-# Run the app
+# Run the development server
 npm run dev
