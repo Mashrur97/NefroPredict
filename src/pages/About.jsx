@@ -1,5 +1,6 @@
 import React from "react";
 import SplashCursor from "../../Reactbits/SplashCursor/SplashCursor"
+import Marquee from "react-fast-marquee"
 const About = () => {
   return (
     <section className="py-16 bg-black text-white min-h-screen pt-40">
@@ -7,7 +8,6 @@ const About = () => {
       <div className="max-w-6xl mx-auto px-4 text-center">
         <h2 className="text-4xl font-bold text-blue-400 mb-10">Meet the Team</h2>
         <div className="grid md:grid-cols-3 gap-8">
-            
           <div className="bg-blue-800/30 border border-blue-500/30 rounded-xl p-6 shadow-md hover:shadow-blue-500/20 transition duration-300">
             <img
               src="trm.png"

@@ -1,9 +1,14 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import Cookies from "js-cookie";
 import { toast } from "sonner";
-
+import GradientText from "../../Reactbits/GradientText/GradientText";
+const avatarUrls = [
+  "/mrf.png",
+  "/trm.png",
+  "/alm.png",
+];
 const Nav = () => {
   const { user, setUser, isLoading } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -24,7 +29,12 @@ const Nav = () => {
       toast.error("Unauthorized or unknown role");
     }
   };
+  const [avatarUrl, setAvatarUrl] = useState(avatarUrls[0]);
 
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * avatarUrls.length);
+    setAvatarUrl(avatarUrls[randomIndex]);
+  }, []);
   return (
     <div className="flex justify-between items-center mx-auto px-5 py-3 bg-black">
       <div className="lg:hidden dropdown">
@@ -50,9 +60,6 @@ const Nav = () => {
         </div>
         <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow text-black">
           <li>
-            <NavLink to="/hows">How it works</NavLink>
-          </li>
-          <li>
             <NavLink to="/blogs">Blogs</NavLink>
           </li>
           <li>
@@ -64,8 +71,12 @@ const Nav = () => {
       <div>
         <NavLink to="/">
           <div className="flex gap-2 items-center">
-            <img src="computer.png" alt="Logo" className="h-8 w-auto" />
-            <p className="font-bold text-2xl text-white">
+            <img
+              src="../../public/computer.png"
+              alt="Logo"
+              className="h-8 w-auto"
+            />
+            <p className="font-bold text-lg md:text-xl lg:text-2xl text-white">
               Nefro<span className="text-blue-400">Predict</span>
             </p>
           </div>
@@ -92,14 +103,6 @@ const Nav = () => {
           </NavLink>
         )}
         <NavLink
-          to="/hows"
-          className={({ isActive }) =>
-            isActive ? "font-bold text-blue-400" : "opacity-75 font-medium"
-          }
-        >
-          How it works
-        </NavLink>
-        <NavLink
           to="/blogs"
           className={({ isActive }) =>
             isActive ? "font-bold text-blue-400" : "opacity-75 font-medium"
@@ -120,30 +123,49 @@ const Nav = () => {
       {isLoading ? (
         <p className="text-white">Loading...</p>
       ) : user ? (
-        <div className="dropdown dropdown-end">
-          <div
-            tabIndex={0}
-            role="button"
-            className="btn btn-ghost btn-circle avatar"
+        <div className="flex justify-between lg:gap-3 items-center">
+          <div className="lg:flex md:flex hidden">
+          <GradientText
+            colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+            animationSpeed={3}
+            showBorder={false}
+            className="custom-class"
           >
-            <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-              <img
-                src="https://img.daisyui.com/images/profile/demo/spiderperson@192.webp"
-                alt="User Avatar"
-              />
-            </div>
+            {user.name}
+          </GradientText>
           </div>
-          <ul
-            tabIndex={0}
-            className="mt-3 z-[1] p-2 shadow-md menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <button onClick={handleDashboardRedirect}>Dashboard</button>
-            </li>
-            <li>
-              <button onClick={handleLogout}>Logout</button>
-            </li>
-          </ul>
+          <div className="dropdown dropdown-end relative">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar"
+            >
+              <div className="w-12 rounded-full ring ring-blue-600 ring-offset-base-100 ring-offset-2">
+                <img src={avatarUrl} alt="User Avatar" />
+              </div>
+            </div>
+            <ul
+              tabIndex={0}
+              className="absolute right-0 mt-3 z-[1] p-2 shadow-lg menu menu-sm dropdown-content bg-gray-900 text-white rounded-lg w-52"
+            >
+              <li>
+                <button
+                  onClick={handleDashboardRedirect}
+                  className="hover:bg-blue-600 rounded px-3 py-2"
+                >
+                  Dashboard
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={handleLogout}
+                  className="hover:bg-red-600 rounded px-3 py-2"
+                >
+                  Logout
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
       ) : (
         <div>

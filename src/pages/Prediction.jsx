@@ -1,7 +1,6 @@
 import { useState } from "react";
-import MagnetLines from "../../Reactbits/MagnetLines/MagnetLines";
 import toast, { Toaster } from "react-hot-toast";
-
+import Marquee from "react-fast-marquee"
 const Predict = () => {
   const [inputs, setInputs] = useState({});
   const [result, setResult] = useState(null);
@@ -16,7 +15,6 @@ const Predict = () => {
 
     const prediction = "Prediction: CKD Detected";
     setResult(prediction);
-    console.log(prediction);
     toast.success(prediction);
   };
 
@@ -45,69 +43,44 @@ const Predict = () => {
   return (
     <>
       <Toaster position="top-center" reverseOrder={false} />
-
+      <div className="bg-black">
+        <Marquee speed={80} gradient={true} gradientColor="black" autoFill={true}>
+          <p className="text-white/60 italic p-5">
+            ⚠️ This tool does not provide medical advice and is intended for
+            informational use only.
+          </p>
+        </Marquee>
+      </div>
+      <div className="bg-black">
+      <h2 className="text-3xl font-bold text-center pb-5 text-white">CKD Prediction</h2>
+      </div>
       <div className="relative min-h-screen flex items-center justify-center bg-black text-white px-4 overflow-hidden">
-        <div className="absolute inset-0 z-0 flex items-center justify-center">
-          <MagnetLines
-            rows={22}
-            columns={22}
-            containerSize="300vmin"
-            lineColor="blue"
-            lineWidth="0.5vmin"
-            lineHeight="5vmin"
-            baseAngle={0}
-          />
-        </div>
-
-        <div className="relative z-10 w-full max-w-4xl bg-gray-900 bg-opacity-90 backdrop-blur-md rounded-2xl shadow-2xl p-8">
-          <h2 className="text-3xl font-bold text-center mb-6">
-            CKD Prediction
-          </h2>
-          <form
-            onSubmit={handleSubmit}
-            className="space-y-3 grid grid-cols-1 md:grid-cols-2 gap-4"
-          >
-            {renderButtonGroup("Age", "age", [
-              "20-29",
-              "30-39",
-              "40-49",
-              "50-59",
-              "60+",
-            ])}
-            {renderButtonGroup("Blood Pressure", "bp", [
-              "Low",
-              "Normal",
-              "High",
-            ])}
-            {renderButtonGroup("Specific Gravity", "sg", [
-              "1.005",
-              "1.010",
-              "1.015",
-              "1.020",
-              "1.025",
-            ])}
-            {renderButtonGroup("Albumin", "al", ["0", "1", "2", "3", "4", "5"])}
-            {renderButtonGroup("Sugar", "su", ["0", "1", "2", "3", "4", "5"])}
-            {renderButtonGroup("Red Blood Cells", "rbc", [
-              "Normal",
-              "Abnormal",
-            ])}
-            {renderButtonGroup("Pus Cell", "pc", ["Normal", "Abnormal"])}
-            {renderButtonGroup("Hemoglobin", "hemo", ["Low", "Normal", "High"])}
-            {renderButtonGroup("Packed Cell Volume", "pcv", [
-              "Low",
-              "Normal",
-              "High",
-            ])}
-            {renderButtonGroup("Serum Creatinine", "sc", [
-              "Low",
-              "Normal",
-              "High",
-            ])}
-            {renderButtonGroup("Blood Urea", "bu", ["Low", "Normal", "High"])}
-            {renderButtonGroup("Sodium", "sod", ["Low", "Normal", "High"])}
-            {renderButtonGroup("Potassium", "pot", ["Low", "Normal", "High"])}
-
+        <div className="relative z-10 w-full  bg-gray-900 bg-opacity-90 backdrop-blur-md rounded-2xl shadow-2xl p-8">
+          <form onSubmit={handleSubmit} className="">
+            <div className="lg:flex justify-around ">
+            <div className="space-y-5">
+            {renderButtonGroup("Pus Cells in Urine", "pus_cells", ["Normal", "Abnormal"])}
+            {renderButtonGroup("Age of the Patient", "age", ["<30", "30-50", "51-70", "70+"])}
+            {renderButtonGroup("Body Mass Index (BMI)", "bmi", ["Underweight", "Normal", "Overweight", "Obese"])}
+            {renderButtonGroup("Sodium Level (mEq/L)", "sodium", ["Low", "Normal", "High"])}
+            {renderButtonGroup("eGFR", "egfr", ["<15", "15-29", "30-59", "60-89", "90+"])}
+            {renderButtonGroup("Urine Protein-to-Creatinine Ratio", "urine_protein", ["Normal", "Elevated", "Severely Elevated"])}
+            {renderButtonGroup("Duration of Diabetes (years)", "diabetes_duration", ["0", "1-5", "6-10", "10+"])}
+            {renderButtonGroup("CRP Level", "crp", ["Normal", "Elevated"])}
+            {renderButtonGroup("Sugar in Urine", "urine_sugar", ["0", "1", "2", "3", "4", "5"])}
+            </div>
+            <div className="space-y-5">
+            {renderButtonGroup("Cystatin C Level", "cystatin_c", ["Low", "Normal", "High"])}
+            {renderButtonGroup("IL-6 Level", "il6", ["Normal", "Elevated"])}
+            {renderButtonGroup("WBC Count (cells/cumm)", "wbc", ["Low", "Normal", "High"])}
+            {renderButtonGroup("Cholesterol Level", "cholesterol", ["Low", "Normal", "High"])}
+            {renderButtonGroup("Serum Phosphate Level", "phosphate", ["Low", "Normal", "High"])}
+            {renderButtonGroup("Serum Albumin Level", "albumin", ["Low", "Normal"])}
+            {renderButtonGroup("Family History of CKD", "family_history", ["Yes", "No"])}
+            {renderButtonGroup("Bacteria in Urine", "bacteria", ["Present", "Absent"])}
+            {renderButtonGroup("Appetite", "appetite", ["Good", "Poor"])}
+            </div>
+            </div><br />
             <div className="md:col-span-2">
               <button
                 type="submit"

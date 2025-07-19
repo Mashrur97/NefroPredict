@@ -1,8 +1,7 @@
 import { useContext, useState } from "react";
 import Cookies from "js-cookie";
-import { toast } from "sonner";
+import { toast, Toaster } from "sonner";
 import { AuthContext } from "../context/AuthContext";
-import { Toaster } from "sonner";
 
 const ChangePasswordModal = ({ isOpen, onClose }) => {
   const { user } = useContext(AuthContext);
@@ -36,7 +35,6 @@ const ChangePasswordModal = ({ isOpen, onClose }) => {
       });
 
       const data = await res.json();
-      console.log(data);
       if (data.success) {
         toast.success(data.message || "Password changed successfully");
         onClose();
@@ -59,30 +57,30 @@ const ChangePasswordModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white p-6 rounded-xl w-full max-w-md">
-        <h2 className="text-xl font-semibold mb-4">Change Password</h2>
+    <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+      <div className="bg-gray-900 bg-opacity-90 backdrop-blur-md p-6 rounded-2xl shadow-2xl w-full max-w-md text-white animate-fadeIn">
+        <h2 className="text-2xl font-bold mb-4 text-center">Change Password</h2>
 
         <input
           type="password"
           placeholder="Old Password"
           value={oldPassword}
           onChange={(e) => setOldPassword(e.target.value)}
-          className="w-full mb-3 p-2 border rounded"
+          className="w-full mb-3 px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <input
           type="password"
           placeholder="New Password"
           value={newPassword}
           onChange={(e) => setNewPassword(e.target.value)}
-          className="w-full mb-3 p-2 border rounded"
+          className="w-full mb-3 px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <input
           type="password"
           placeholder="Confirm New Password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
-          className="w-full mb-1 p-2 border rounded"
+          className="w-full mb-1 px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         {newPassword !== confirmPassword && confirmPassword.length > 0 && (
           <p className="text-red-500 text-sm mb-2">
@@ -91,15 +89,18 @@ const ChangePasswordModal = ({ isOpen, onClose }) => {
         )}
 
         <div className="flex justify-end gap-2 mt-4">
-          <button onClick={onClose} className="bg-gray-300 px-4 py-2 rounded">
+          <button
+            onClick={onClose}
+            className="px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition duration-200"
+          >
             Cancel
           </button>
           <button
             onClick={handleChangePassword}
-            className={`px-4 py-2 rounded text-white ${
+            className={`px-4 py-2 rounded-lg text-white transition duration-200 ${
               isDisabled || isSubmitting
                 ? "bg-blue-300 cursor-not-allowed"
-                : "bg-blue-600 hover:bg-blue-700"
+                : "bg-blue-600 hover:bg-blue-500"
             }`}
             disabled={isDisabled || isSubmitting}
           >

@@ -1,20 +1,25 @@
 import { Link, useNavigate } from "react-router";
-import { toast, Toaster } from "sonner";
+import DarkVeil from "../../Reactbits/DarkVeil/DarkVeil";
+import { toast, Toaster } from "sonner"; // ✅ Added for notification
 
 const Register = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // ✅ Used for redirecting after success
+
   const handleSub = (e) => {
     e.preventDefault();
 
     const name = e.target.name.value;
     const password = e.target.pass.value;
     const email = e.target.email.value;
+
     const user = {
       name,
       email,
       password,
     };
+
     console.log(user);
+
     fetch("http://localhost:5000/api/auth/register", {
       method: "POST",
       headers: {
@@ -38,57 +43,64 @@ const Register = () => {
         toast.error("An error occurred during registration.");
       });
   };
-  return (
-    <div className="flex justify-center items-center min-h-screen">
-      <div className="hero-content flex-col lg:flex-row-reverse w-full">
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-          <h2 className="mt-5 font-semibold text-3xl text-center">
-            Register now
-          </h2>
-          <div className="card-body">
-            <form onSubmit={handleSub} className="fieldset">
-              <label className="label">Name</label>
-              <input
-                name="name"
-                required
-                type="text"
-                className="input"
-                placeholder="Name"
-              />
 
-              <label className="label">Email</label>
-              <input
-                name="email"
-                required
-                type="email"
-                className="input"
-                placeholder="Email"
-              />
-              <label className="label">Password</label>
-              <input
-                name="pass"
-                required
-                type="password"
-                pattern="(?=.*[a-z])(?=.*[A-Z]).{6,}"
-                title="Must have an uppercase letter, a lowercase letter, and be at least 6 characters long."
-                className="input"
-                placeholder="Password"
-              />
-              <div>
-                <a className="link link-hover">Forgot password?</a>
-              </div>
-              <button className="btn btn-neutral mt-4">Register</button>
-            </form>
-            <h2>
-              Already have an account?{" "}
-              <Link to={"/login"} className="text-blue-700 underline">
-                Login
-              </Link>
-            </h2>
-          </div>
-        </div>
+  return (
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden text-white px-4">
+      <Toaster /> {/* ✅ Notification container */}
+
+      <div className="absolute inset-0 -z-10">
+        <DarkVeil />
       </div>
-      <Toaster />
+
+      <div className="relative z-10 w-full max-w-md bg-gray-900 bg-opacity-90 backdrop-blur-md rounded-2xl shadow-2xl p-8">
+        <h2 className="text-3xl font-semibold text-center mb-6">
+          Register now
+        </h2>
+        <form onSubmit={handleSub} className="space-y-5">
+          <div>
+            <label className="block text-sm font-medium mb-1">Name</label>
+            <input
+              name="name"
+              required
+              type="text"
+              placeholder="Your Name"
+              className="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-1">Email</label>
+            <input
+              name="email"
+              required
+              type="email"
+              placeholder="Email"
+              className="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-1">Password</label>
+            <input
+              name="pass"
+              required
+              type="password"
+              pattern="(?=.*[a-z])(?=.*[A-Z]).{6,}"
+              title="Must include uppercase, lowercase, and at least 6 characters."
+              placeholder="Password"
+              className="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+          <button className="relative w-full rounded-3xl px-5 py-2 overflow-hidden group bg-blue-600 hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-blue-400 transition-all ease-out duration-300 mt-2">
+            <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
+            <span className="relative">Register</span>
+          </button>
+        </form>
+        <p className="text-center mt-6 text-sm">
+          Already have an account?{" "}
+          <Link to="/login" className="text-blue-400 hover:text-blue-500 underline">
+            Login
+          </Link>
+        </p>
+      </div>
     </div>
   );
 };

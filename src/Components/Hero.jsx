@@ -14,7 +14,7 @@ const Hero = () => {
       {/* <ModelViewer url="Kidneys.glb" width={400} height={400} /> */}
       <div className="relative z-10 flex items-center justify-start w-full h-full px-8">
         <div className="max-w-md text-white">
-          <BlurText
+          {/* <BlurText
             text="Welcome to "
             delay={150}
             animateBy="words"
@@ -36,7 +36,8 @@ const Hero = () => {
               direction="top"
               className="text-blue-400 text-5xl font-bold mb-5"
             />
-          </div>
+          </div> */}
+          <h2 className="text-5xl font-bold">Welcome to <br /> Nefro<span className="text-blue-400">Predict</span></h2><br />
 
           <DecryptedText
             text="NefroPredict is an AI-powered early detection tool for Chronic Kidney Disease. Using machine learning models trained on real clinical data, it helps identify CKD risk factors quickly and intuitively before it’s too late."

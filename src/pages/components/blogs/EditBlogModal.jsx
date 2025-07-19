@@ -40,8 +40,8 @@ const EditBlogModal = ({ isOpen, onClose, blog, onUpdated }) => {
       );
 
       toast.success("Blog updated");
-      onUpdated(); // refetch blogs
-      onClose(); // close modal
+      onUpdated();
+      onClose();
     } catch (err) {
       console.error(err);
       toast.error("Update failed");
@@ -51,43 +51,43 @@ const EditBlogModal = ({ isOpen, onClose, blog, onUpdated }) => {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
       <form
         onSubmit={handleUpdate}
-        className="bg-white p-6 rounded shadow w-full max-w-md space-y-4"
+        className="bg-gray-900 p-6 rounded-2xl shadow-lg w-full max-w-md space-y-6 text-white"
       >
-        <h2 className="text-xl font-bold mb-2">Update Blog</h2>
+        <h2 className="text-2xl text-center font-bold mb-4">Update Blog</h2>
         <input
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="w-full p-2 border rounded"
+          className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
           required
         />
         <textarea
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          className="w-full p-2 border rounded"
+          className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
           required
         />
         <input
           type="file"
           accept="image/*"
           onChange={(e) => setImageFile(e.target.files[0])}
-          className="w-full p-2 border rounded file:text-black"
+          className="w-full p-2 border border-gray-700 rounded-lg bg-gray-800 file:bg-blue-600 file:text-white file:rounded-l file:px-3"
         />
-        <div className="flex justify-end space-x-2">
+        <div className="flex justify-end space-x-3">
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 bg-gray-400 text-white rounded"
+            className="px-5 py-2 bg-gray-600 hover:bg-gray-700 rounded-lg transition"
           >
             Cancel
           </button>
           <button
             type="submit"
             disabled={loading}
-            className="px-4 py-2 bg-blue-600 text-white rounded"
+            className="px-5 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-white transition disabled:opacity-50"
           >
             {loading ? "Updating..." : "Update"}
           </button>

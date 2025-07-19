@@ -16,9 +16,8 @@ const AdminDashboard = () => {
   const [blogs, setBlogs] = useState([]);
   const [users, setUsers] = useState([]);
   const token = Cookies.get("token");
-  const navigate = useNavigate(); // 👈 for redirection
+  const navigate = useNavigate();
 
-  // Fetch users
   const fetchUsers = () => {
     fetch("http://localhost:5000/api/user")
       .then((res) => res.json())
@@ -30,7 +29,6 @@ const AdminDashboard = () => {
     fetchUsers();
   }, []);
 
-  // Update role
   const handleRoleChange = (email, newRole) => {
     fetch(`http://localhost:5000/api/user/${email}`, {
       method: "PATCH",
@@ -48,7 +46,6 @@ const AdminDashboard = () => {
       .catch(() => toast.error("Failed to update role"));
   };
 
-  // Delete user
   const handleDeleteUser = (email) => {
     fetch(`http://localhost:5000/api/user/${email}`, {
       method: "DELETE",
@@ -65,7 +62,6 @@ const AdminDashboard = () => {
       .catch(() => toast.error("Failed to delete user"));
   };
 
-  // Fetch blogs
   useEffect(() => {
     if (activeTab === "manageBlogs") fetchBlogs();
   }, [activeTab]);
@@ -79,7 +75,6 @@ const AdminDashboard = () => {
       .catch(() => toast.error("Failed to load blogs"));
   };
 
-  // Toggle blog publish status
   const handleToggleBlog = (id, currentStatus) => {
     axios
       .patch(
@@ -94,7 +89,6 @@ const AdminDashboard = () => {
       .catch(() => toast.error("Failed to update status"));
   };
 
-  // Delete blog
   const handleDeleteBlog = (id) => {
     axios
       .delete(`http://localhost:5000/api/blogs/${id}`, {
@@ -108,46 +102,38 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
-      {/* Sidebar */}
-      <aside className="w-64 bg-white border-r shadow relative">
-        <div className="p-6 border-b">
-          <h2 className="text-2xl font-bold">Admin Dashboard</h2>
+    <div className="flex min-h-screen bg-black text-white">
+      <aside className="w-64 bg-gray-900 bg-opacity-90 backdrop-blur-md  shadow relative">
+        <div className="p-6 border-b border-gray-700">
+          <h2 className="text-2xl font-bold text-center text-blue-400">Admin Dashboard</h2>
         </div>
         <nav className="p-6 space-y-3">
           <button
             onClick={() => setActiveTab("manageUsers")}
-            className={`w-full flex items-center gap-2 px-4 py-2 rounded-lg ${
-              activeTab === "manageUsers"
-                ? "bg-blue-600 text-white"
-                : "text-gray-700 hover:bg-gray-100"
+            className={`w-full flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 ${
+              activeTab === "manageUsers" ? "bg-blue-600 text-white" : "text-gray-300 hover:bg-gray-800"
             }`}
           >
             <FaUsers /> Manage Users
           </button>
           <button
             onClick={() => setActiveTab("manageBlogs")}
-            className={`w-full flex items-center gap-2 px-4 py-2 rounded-lg ${
-              activeTab === "manageBlogs"
-                ? "bg-blue-600 text-white"
-                : "text-gray-700 hover:bg-gray-100"
+            className={`w-full flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 ${
+              activeTab === "manageBlogs" ? "bg-blue-600 text-white" : "text-gray-300 hover:bg-gray-800"
             }`}
           >
             <FaBlog /> Manage Blogs
           </button>
           <button
             onClick={() => setActiveTab("userHistory")}
-            className={`w-full flex items-center gap-2 px-4 py-2 rounded-lg ${
-              activeTab === "userHistory"
-                ? "bg-blue-600 text-white"
-                : "text-gray-700 hover:bg-gray-100"
+            className={`w-full flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 ${
+              activeTab === "userHistory" ? "bg-blue-600 text-white" : "text-gray-300 hover:bg-gray-800"
             }`}
           >
             <FaHistory /> All User History
           </button>
         </nav>
 
-        {/* ✅ Home Button at Bottom */}
         <div className="absolute bottom-6 left-6 right-6">
           <button
             onClick={() => navigate("/")}
@@ -158,16 +144,13 @@ const AdminDashboard = () => {
         </div>
       </aside>
 
-      {/* Main Content */}
       <main className="flex-1 p-8 overflow-auto">
         {activeTab === "manageUsers" && (
           <>
-            <h3 className="text-xl font-semibold mb-6 text-gray-900">
-              Manage Users
-            </h3>
-            <div className="overflow-x-auto bg-white rounded-lg shadow p-4">
-              <table className="min-w-full text-sm text-left">
-                <thead className="bg-gray-100 text-xs uppercase text-gray-500">
+            <h3 className="text-3xl text-center font-semibold mb-6 text-blue-400">Manage Users</h3>
+            <div className="overflow-x-auto bg-gray-900 rounded-lg shadow p-4">
+              <table className="min-w-full text-sm text-left text-white">
+                <thead className="bg-gray-800 text-xs uppercase text-gray-400 text-center">
                   <tr>
                     <th className="px-6 py-3">Name</th>
                     <th className="px-6 py-3">Email</th>
@@ -175,38 +158,31 @@ const AdminDashboard = () => {
                     <th className="px-6 py-3">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y">
+                <tbody className="divide-y divide-gray-700 text-center">
                   {users?.data?.map((user) => (
-                    <tr key={user._id}>
+                    <tr key={user._id} className="hover:bg-gray-800">
                       <td className="px-6 py-4">{user.name}</td>
                       <td className="px-6 py-4">{user.email}</td>
                       <td className="px-6 py-4">
                         <select
                           value={user.role}
-                          onChange={(e) =>
-                            handleRoleChange(user.email, e.target.value)
-                          }
-                          className="border px-2 py-1 rounded"
+                          onChange={(e) => handleRoleChange(user.email, e.target.value)}
+                          className="bg-gray-800 text-white border border-gray-600 px-2 py-1 rounded"
                         >
                           <option value="user">User</option>
                           <option value="admin">Admin</option>
                         </select>
                       </td>
-                      <td className="px-6 py-4 flex gap-3">
+                      <td className="px-6 py-4 flex gap-3 justify-center">
                         <button
-                          onClick={() =>
-                            handleRoleChange(
-                              user.email,
-                              user.role === "admin" ? "user" : "admin"
-                            )
-                          }
-                          className="text-blue-600 hover:underline"
+                          onClick={() => handleRoleChange(user.email, user.role === "admin" ? "user" : "admin")}
+                          className="text-blue-400 hover:text-blue-600"
                         >
                           <FaUserEdit />
                         </button>
                         <button
                           onClick={() => handleDeleteUser(user.email)}
-                          className="text-red-600 hover:underline"
+                          className="text-red-400 hover:text-red-600"
                         >
                           <FaTrash />
                         </button>
@@ -221,50 +197,36 @@ const AdminDashboard = () => {
 
         {activeTab === "manageBlogs" && (
           <>
-            <h3 className="text-xl mb-6 font-semibold text-gray-800">
-              User Blogs
-            </h3>
-            <div className="bg-white rounded-xl shadow-lg p-4 overflow-x-auto">
-              <table className="min-w-full table-auto border-collapse">
+            <h3 className="text-3xl mb-6 font-semibold text-blue-400 text-center">User Blogs</h3>
+            <div className="bg-gray-900 rounded-xl shadow-lg p-4 overflow-x-auto">
+              <table className="min-w-full table-auto border-collapse text-white">
                 <thead>
-                  <tr className="bg-gradient-to-r from-blue-100 to-blue-300 text-left text-sm font-medium text-gray-700">
+                  <tr className="bg-gray-800 text-sm font-medium text-gray-300 text-center">
                     <th className="px-6 py-3">Title</th>
                     <th className="px-6 py-3">Author Email</th>
                     <th className="px-6 py-3">Status</th>
                     <th className="px-6 py-3">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="text-sm text-gray-700">
+                <tbody className="text-sm">
                   {blogs.length === 0 ? (
                     <tr>
-                      <td
-                        colSpan="4"
-                        className="text-center py-6 text-gray-500"
-                      >
+                      <td colSpan="4" className="text-center py-6 text-gray-500">
                         No blogs found
                       </td>
                     </tr>
                   ) : (
                     blogs.map((b) => (
-                      <tr
-                        key={b._id}
-                        className="hover:bg-gray-50 transition duration-150"
-                      >
+                      <tr key={b._id} className="hover:bg-gray-800 transition duration-150 text-center">
                         <td className="px-6 py-3">{b.title}</td>
                         <td className="px-6 py-3">{b.authorEmail}</td>
-                        <td className="px-6 py-3">
-                          {b.isPublished ? "✅ Published" : "🕓 Pending"}
-                        </td>
+                        <td className="px-6 py-3">{b.isPublished ? "✅ Published" : "🕓 Pending"}</td>
                         <td className="px-6 py-3 flex gap-2">
                           <button
-                            onClick={() =>
-                              handleToggleBlog(b._id, b.isPublished)
-                            }
-                            className={`px-4 py-1 rounded font-medium ${
-                              b.isPublished
-                                ? "bg-yellow-500 hover:bg-yellow-600"
-                                : "bg-green-500 hover:bg-green-600"
-                            } text-white transition`}
+                            onClick={() => handleToggleBlog(b._id, b.isPublished)}
+                            className={`px-4 py-1 rounded font-medium transition text-white ${
+                              b.isPublished ? "bg-yellow-500 hover:bg-yellow-600" : "bg-green-500 hover:bg-green-600"
+                            }`}
                           >
                             {b.isPublished ? "Unpublish" : "Publish"}
                           </button>
@@ -286,13 +248,9 @@ const AdminDashboard = () => {
 
         {activeTab === "userHistory" && (
           <>
-            <h3 className="text-xl font-semibold mb-6 text-gray-900">
-              All User Prediction History
-            </h3>
-            <div className="bg-white p-4 rounded shadow">
-              <p className="text-gray-500">
-                User prediction history goes here...
-              </p>
+            <h3 className="text-3xl font-semibold mb-6 text-blue-400 text-center">All User Prediction History</h3>
+            <div className="bg-gray-900 p-4 rounded shadow text-gray-300">
+              <p>User prediction history goes here...</p>
             </div>
           </>
         )}

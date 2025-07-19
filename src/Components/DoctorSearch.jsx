@@ -6,7 +6,8 @@ const DoctorSearch = () => {
   const [results, setResults] = useState([]);
   const [searched, setSearched] = useState(false);
 
-  const handleSearch = () => {
+  const handleSearch = (e) => {
+    e.preventDefault();
     const filtered = doctors.filter((doc) =>
       doc.address.toLowerCase().includes(query.toLowerCase())
     );
@@ -15,15 +16,15 @@ const DoctorSearch = () => {
   };
 
   return (
-    <section className="p-6 bg-black text-white">
+    <section className="p-6 bg-black text-white pt-20">
       <div className="flex justify-center">
         <img className="lg:w-1/3" src="kidney.gif" alt="" srcset="" />
       </div>
-      <h2 className="text-3xl font-bold text-blue-400 mb-6 text-center mt-5">
-        Find Kidney Specialists by Area
-      </h2>
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 text-blue-400 drop-shadow-[0_0_10px_#60a5fa]">
+       Find Kidney Specialists by Area (Only inside Dhaka)
+      </h1>
 
-      <div className="flex gap-3 mb-6">
+        <form className="flex gap-3 mb-6">
         <input
           type="text"
           placeholder="Enter location (e.g., Shahbag, Dhanmondi)"
@@ -35,7 +36,7 @@ const DoctorSearch = () => {
           <span class="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
           <span class="relative">Search</span>
         </button>
-      </div>
+      </form>
 
       {!searched && <></>}
 

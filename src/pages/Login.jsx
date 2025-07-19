@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { toast, Toaster } from "sonner";
 import Cookies from "js-cookie";
-import MagnetLines from "../../Reactbits/MagnetLines/MagnetLines";
+import DarkVeil from "../../Reactbits/DarkVeil/DarkVeil";
 import { AuthContext } from "../context/AuthContext";
 import { jwtDecode } from "jwt-decode";
 
@@ -44,19 +44,12 @@ const Login = () => {
   };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black text-white px-4">
-      <div className="absolute inset-0 z-0 flex items-center justify-center">
-        <MagnetLines
-          rows={22}
-          columns={22}
-          containerSize="300vmin"
-          lineColor="blue"
-          lineWidth="0.5vmin"
-          lineHeight="5vmin"
-          baseAngle={0}
-        />
+    <div className="relative min-h-screen flex items-center justify-center text-white px-4 overflow-hidden">
+      <div className="absolute inset-0 -z-10">
+        <DarkVeil />
       </div>
-      <div className="relative z-10 w-full max-w-md bg-gray-900 bg-opacity-90 backdrop-blur-md rounded-2xl shadow-2xl p-8">
+
+      <div className="relative z-10 w-full max-w-md bg-gray-900 bg-opacity-90 backdrop-blur-md rounded-2xl shadow-2xl p-8 animate-fadeIn">
         <h2 className="text-3xl font-bold text-center mb-6">Login</h2>
         <form onSubmit={handleSub} className="space-y-6">
           <div>

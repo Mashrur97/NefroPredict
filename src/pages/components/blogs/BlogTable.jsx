@@ -17,22 +17,22 @@ const BlogTable = ({ blogs, onDelete, onUpdated }) => {
 
   return (
     <>
-      <div className="overflow-x-auto bg-white rounded-lg shadow p-6">
-        <table className="min-w-full divide-y divide-gray-200">
+      <div className="overflow-x-auto bg-gray-900 bg-opacity-90 backdrop-blur-md rounded-2xl shadow-2xl p-6 text-white animate-fadeIn">
+        <table className="min-w-full divide-y divide-gray-700">
           <thead>
-            <tr className="bg-gray-100">
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+            <tr className="bg-gray-800 text-center">
+              <th className="px-6 py-3  text-xs font-medium text-gray-400 uppercase">
                 Title
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+              <th className="px-6 py-3 text-xs font-medium text-gray-400 uppercase">
                 Published
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+              <th className="px-6 py-3 text-xs font-medium text-gray-400 uppercase">
                 Actions
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200">
+          <tbody className="divide-y divide-gray-800 text-center">
             {blogs.length === 0 && (
               <tr>
                 <td colSpan={3} className="px-6 py-4 text-center text-gray-500">
@@ -40,8 +40,12 @@ const BlogTable = ({ blogs, onDelete, onUpdated }) => {
                 </td>
               </tr>
             )}
-            {blogs.map((blog) => (
-              <tr key={blog._id}>
+            {blogs.map((blog, index) => (
+              <tr
+                key={blog._id}
+                className="hover:bg-gray-800 transition duration-200 animate-fadeIn"
+                style={{ animationDelay: `${index * 0.05}s`, animationFillMode: 'both' }}
+              >
                 <td className="px-6 py-4">{blog.title}</td>
                 <td className="px-6 py-4">
                   {blog.isPublished ? "✅ Yes" : "❌ No"}
@@ -49,13 +53,13 @@ const BlogTable = ({ blogs, onDelete, onUpdated }) => {
                 <td className="px-6 py-4 space-x-2">
                   <button
                     onClick={() => openModal(blog)}
-                    className="px-3 py-1 bg-blue-500 text-white rounded"
+                    className="px-4 py-1 rounded-lg bg-blue-600 hover:bg-blue-500 transition duration-200"
                   >
                     Update
                   </button>
                   <button
                     onClick={() => onDelete(blog._id)}
-                    className="px-3 py-1 bg-red-500 text-white rounded"
+                    className="px-4 py-1 rounded-lg bg-red-600 hover:bg-red-500 transition duration-200"
                   >
                     Delete
                   </button>

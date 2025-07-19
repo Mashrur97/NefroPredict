@@ -72,11 +72,13 @@ const BlogForm = ({ email, onBlogCreated }) => {
   };
 
   return (
-    <div className="">
-      <p className="text-3xl mb-8 font-bold">Post Blog</p>
+    <div className="animate-fadeIn">
+      <p className="text-3xl mb-8 font-bold text-white text-center">
+        Post Blog
+      </p>
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded shadow mb-6 space-y-4"
+        className="bg-gray-900 bg-opacity-90 backdrop-blur-md p-6 rounded-2xl shadow-2xl mb-6 space-y-4"
       >
         <input
           type="text"
@@ -85,7 +87,7 @@ const BlogForm = ({ email, onBlogCreated }) => {
           value={formData.title}
           onChange={handleChange}
           required
-          className="w-full border p-2 rounded"
+          className="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <textarea
           name="content"
@@ -93,21 +95,25 @@ const BlogForm = ({ email, onBlogCreated }) => {
           value={formData.content}
           onChange={handleChange}
           required
-          className="w-full border p-2 rounded"
+          className="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <input
           type="file"
           accept="image/*"
           onChange={handleFileChange}
           required
-          className="w-full p-2 border rounded file:text-black"
+          className="w-full px-4 py-2 bg-gray-800 text-blue-300 rounded-lg file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-500"
         />
+
         <button
           type="submit"
           disabled={loading}
-          className="bg-blue-600 text-white px-4 py-2 rounded disabled:opacity-50"
+          className="relative w-full rounded-3xl px-5 py-2 overflow-hidden group bg-blue-600 hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-blue-400 transition-all ease-out duration-300 mt-2 disabled:opacity-50"
         >
-          {loading ? "Posting..." : "Post Blog"}
+          <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
+          <span className="relative">
+            {loading ? "Posting..." : "Post Blog"}
+          </span>
         </button>
       </form>
     </div>
